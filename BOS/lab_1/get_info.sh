@@ -1,0 +1,1 @@
+parted /dev/sdb print
