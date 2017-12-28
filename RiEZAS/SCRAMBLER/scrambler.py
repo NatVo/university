@@ -18,28 +18,28 @@ def ss_scrambling(scrambler, signal):
 
 	print('\n_____________________________________________')
 	print('|САМОСИНХРОНИЗИРУЮЩИЙСЯ СКРЕМБЛЕР/ДЕСКРЕМБЛЕР|')
-	print('_____________________________________________')
+	print('_____________________________________________\n')
 		
 	encode_signal = scrambler.ss_scrambler_descrambler(signal, 'scrambler')
 	print('\nИСХОДНЫЙ СИГНАЛ: ', signal)
 	print('СКРЕМБЛИРОВАННЫЙ СИГНАЛ: ', encode_signal, '\n')
 
 	decode_signal = scrambler.ss_scrambler_descrambler(encode_signal, 'descrembler')
-	print('СКРЕМБЛИРОВННЫЙ СИГНАЛ: ', encode_signal)
+	print('\nСКРЕМБЛИРОВННЫЙ СИГНАЛ: ', encode_signal)
 	print('ДЕСКРЕМБЛИРОВАННЫЙ СИГНАЛ: ', decode_signal, '\n')
 
 def addit_scrambling(scrambler, signal, register):
 
 	print('\n________________________________')
 	print('|АДДИТИВНЫЙ СКРЕМБЛЕР/ДЕСКРЕМБЛЕР|')
-	print('__________________________________')
+	print('__________________________________\n')
 		
 	encode_signal = scrambler.addit_scrambler_descrambler(signal, register)
 	print('\nИСХОДНЫЙ СИГНАЛ: ', signal)
 	print('СКРЕМБЛИРОВАННЫЙ СИГНАЛ: ', encode_signal, '\n')
 
 	decode_signal = scrambler.addit_scrambler_descrambler(encode_signal, register)
-	print('СКРЕМБЛИРОВННЫЙ СИГНАЛ: ', encode_signal)
+	print('\nСКРЕМБЛИРОВННЫЙ СИГНАЛ: ', encode_signal)
 	print('ДЕСКРЕМБЛИРОВАННЫЙ СИГНАЛ: ', decode_signal, '\n')
 
 
@@ -107,7 +107,7 @@ class Scrambler():
 		code_signal = ''
 
 		for i in range(0, len(signal)):	
-			#print(register)
+			print(register)
 			b = bool(int(signal[i])) ^ bool(register[self.xor_1]) ^ bool(register[self.xor_2])
 			#print ('s[', i, '] ', signal[i], ' bool(s[', i, ']) ', bool(int(signal[i])))
 			#print ('reg[', self.xor_1, '] ', register[self.xor_1], ' bool(reg[', self.xor_1, ']) ', bool(register[self.xor_1]))
@@ -126,7 +126,7 @@ class Scrambler():
 	def addit_scrambler_descrambler(self, signal, register):
 		code_signal = ''
 		for i in range(0, len(signal)):
-			#print(register)
+			print(register)
 			xor_reg = bool(register[self.xor_1]) ^ bool(register[self.xor_2])
 			b = bool(int(signal[i])) ^ xor_reg
 			code_signal += str(int(b))
@@ -139,7 +139,7 @@ if __name__ == '__main__':
 	#shift_reg_length, xor_1, xor_2 = input_elements()
 	#scrambler = Scrambler(3, 5, 5)
 	print('\nСАМОСИНХРОНИЗИРУЮЩИЙСЯ СКРЕМБЛЕР/ДЕСКРЕМБЛЕР')
-	print('==========================================')
+	print('============================================')
 	shift_reg_length, xor_1, xor_2 = input_elements()
 	scrambler =  Scrambler(xor_1, xor_2, shift_reg_length)
 	
@@ -147,7 +147,7 @@ if __name__ == '__main__':
 	ss_scrambling(scrambler, signal)
 
 	print('\nАДДИТИВНЫЙ СКРЕМБЛЕР/ДЕСКРЕМБЛЕР')
-	print('==================================')
+	print('====================================')
 	shift_reg_length, xor_1, xor_2 = input_elements()
 	scrambler =  Scrambler(xor_1, xor_2, shift_reg_length)
 	
