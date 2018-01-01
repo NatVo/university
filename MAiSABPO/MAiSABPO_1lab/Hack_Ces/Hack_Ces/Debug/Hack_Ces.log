@@ -1,0 +1,27 @@
+﻿Построение начато 18.12.2017 12:23:46.
+     1>Проект "D:\MAiSABPO\Hack_Ces\Hack_Ces\Hack_Ces.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(31): warning C4018: <: несоответствие типов со знаком и без знака
+     1>main.cpp(33): warning C4018: <: несоответствие типов со знаком и без знака
+     1>main.cpp(54): warning C4018: <: несоответствие типов со знаком и без знака
+     1>main.cpp(69): warning C4018: <: несоответствие типов со знаком и без знака
+     1>main.cpp(94): warning C4018: <: несоответствие типов со знаком и без знака
+     1>main.cpp(137): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\conio.h(131): см. объявление "getch"
+     1>main.cpp(142): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\conio.h(131): см. объявление "getch"
+     1>d:\maisabpo\hack_ces\hack_ces\main.cpp(17): warning C4715: GetNumChar: значение возвращается не при всех путях выполнения
+     1>d:\maisabpo\hack_ces\hack_ces\main.cpp(26): warning C4715: GetCharNum: значение возвращается не при всех путях выполнения
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Ксения\AppData\Local\Temp\.NETFramework,Version=v4.6.1.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\MAiSABPO\Hack_Ces\Debug\Hack_Ces.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\MAiSABPO\Hack_Ces\Debug\Hack_Ces.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\main.obj
+         "Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.obj"
+         Hack_Ces.vcxproj -> D:\MAiSABPO\Hack_Ces\Debug\Hack_Ces.exe
+     1>Построение проекта "D:\MAiSABPO\Hack_Ces\Hack_Ces\Hack_Ces.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:05.09
