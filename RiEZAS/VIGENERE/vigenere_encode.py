@@ -1,5 +1,5 @@
-
-ALPHABET = ' abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZабвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!:#%'
+ALPHABET = 'абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!?;:#%\\n[] abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+ALPHABET_MESS = 'абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!?;:#%\\n[]'
 
 def encode(message, key):
     
@@ -12,18 +12,13 @@ def encode(message, key):
     key_line = key_line[:len(message)]
 
     for i in range(0, len(message)):
-        index = (ALPHABET.find(message[i]) + ALPHABET.find(key_line[i])) % len(message)
+        index = (ALPHABET_MESS.find(message[i]) + ALPHABET.find(key_line[i])) % len(ALPHABET)
         #print('index:{}'.format(ALPHABET[index]))
         encode_str += ALPHABET[index]
     print('\nЗашифрованное сообщение:{}'.format(encode_str))
     f = open('encode.txt', 'w')
     f.write(encode_str)
     f.close()
-    
-    key_f = open('key.txt', 'w')
-    key_f.write(key)
-    key_f.close()
-
 
 
 if __name__ == '__main__':
@@ -31,3 +26,4 @@ if __name__ == '__main__':
     key = input('\nВведите ключ:')
 
     encode(message, key)
+

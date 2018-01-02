@@ -1,9 +1,8 @@
+ALPHABET = 'абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!?;:#%\\n[] abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+ALPHABET_MESS = 'абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!?;:#%\\n[]'
 
-ALPHABET = ' abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZабвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789.,/*!:#%'
-
-def decode():
+def decode(key):
     
-    key = ''
     key_line = ''
     encode_str = ''
     decode_str = ''
@@ -11,23 +10,19 @@ def decode():
     with open('encode.txt') as f:
         encode_str = f.readline()
     
-    with open('key.txt') as key_f:
-        key = key_f.readline()
-
     while (len(key_line) < len(encode_str)):
         key_line += key
     
     key_line = key_line[:len(encode_str)]
-
-    
+   
     print('\nЗашифрованное сообщение: {}'.format(encode_str))
-    print('Ключ: {}'.format(key_line))
 
     for i in range(0, len(encode_str)):
-        index = (ALPHABET.find(encode_str[i]) - ALPHABET.find(key_line[i])) % len(encode_str)
+        index = (ALPHABET.find(encode_str[i]) - ALPHABET.find(key_line[i])) % len(ALPHABET)
         #print('index:{}'.format(index))
-        decode_str += ALPHABET[index]
+        decode_str += ALPHABET_MESS[index]
     print('\nРасшифрованное сообщение: {}'.format(decode_str)) 
 
 if __name__ == '__main__':
-    decode()
+    key = input('\nВведите ключ:')
+    decode(key)
