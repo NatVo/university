@@ -1,6 +1,3 @@
-ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,/*!?;:#%[]абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
-#ALPHABET_MESS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,/*!?;:#%[]'
-ALPHABET_MESS = 'abcdefghijklmnopqrstuvwxyz0123456789 .,/*!?;:#%[]'
 
 def encode(message, key):
     
@@ -13,12 +10,12 @@ def encode(message, key):
     key_line = key_line[:len(message)]
 
     for i in range(0, len(message)):
-        index = (ALPHABET_MESS.find(message[i]) + ALPHABET.find(key_line[i])) % len(ALPHABET)
+        index = (ord(message[i]) + ord(key_line[i])) % 256
         #print('index:{}'.format(ALPHABET[index]))
-        encode_str += ALPHABET[index]
+        encode_str += chr(index)
     print('\nЗашифрованное сообщение:{}'.format(encode_str))
 
-    f = open('encode.txt', 'w')
+    f = open('enc.txt', 'w')
     f.write(encode_str)
     f.close()
 
