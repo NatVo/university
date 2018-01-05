@@ -24,7 +24,8 @@ def encode(message, key):
 
 
 if __name__ == '__main__':
-    message = input('\nВведите сообщение:')
+    #message = input('\nВведите сообщение:')
+    message = open('message.txt', 'r').read()
     key = input('\nВведите ключ:')
 
     encode(message, key)

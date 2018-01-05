@@ -4,7 +4,7 @@ ALPHABET_MESS = 'abcdefghijklmnopqrstuvwxyz0123456789 .,/*!?;:#%[]'
 ALPHABET_KEY = ''
 
 def attack(encode_str):
-    for freq in range (1, 7):
+    for freq in range (1, 9):
         print('\n', 'i = ', freq)
         counter = 0
         letters = []
@@ -12,23 +12,23 @@ def attack(encode_str):
         letters.append(encode_str[counter])
         
         pred_set = get_ded_set(encode_str[counter])
-        print('pred set: ', pred_set)
+        #print('pred set: ', pred_set)
         while((counter + freq) < len(encode_str)):
             counter += freq
             new_set = get_ded_set(encode_str[counter])
             
             pred_set = interseq(pred_set, new_set)
             inter = interseq(pred_set, new_set)
-            print('==========================================')
-            print('new_set:', new_set)
-            print('\ninter:')
-            print(inter)
-            print('==========================================')
-            print()
+            #print('==========================================')
+            #print('new_set:', new_set)
+            #print('\ninter:')
+            #print(inter)
+            #print('==========================================')
+            #print()
             letters.append(encode_str[counter])
             
         print('pred_set:', pred_set)
-        print('new_set:', new_set)
+        #print('new_set:', new_set)
         print(letters)
 
 

@@ -1,6 +1,7 @@
-from utils.lck_sequence import get_lck_seq
+from utils.lck_sequence import get_lck_seq, is_prime
+from fractions import gcd
 
-ALPHABET = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\\n.,/*!:#%[]'
+#ALPHABET = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\\n.,/*!:#%[]'
 
 def chaeck_if_prime(M):
     pass
@@ -11,10 +12,12 @@ def encode(message, key, LCK_SEQ):
     encode_str = ''
 
     for i in range(0, len(message)):
-        index = (ALPHABET.find(message[i]) + LCK_SEQ[key + i]) % len(ALPHABET)
-        #print('index:{}'.format(ALPHABET[index]))
-        encode_str += ALPHABET[index]
-    print('\nЗашифрованное сообщение:{}'.format(encode_str))
+        #index = (ALPHABET.find(message[i]) + LCK_SEQ[key + i]) % len(ALPHABET)
+        #index = (ord(message[i]) + ord(key_line[i])) % 256
+        index = (ord(message[i]) + LCK_SEQ[key + i]) % 1104
+
+        encode_str += chr(index)
+    print('\nЗАШИФРОВАННОЕ СООБЩЕНИЕ: \n{}'.format(encode_str))
 
     f = open('encode_lck.txt', 'w')
     f.write(encode_str)
@@ -22,19 +25,34 @@ def encode(message, key, LCK_SEQ):
 
 
 if __name__ == '__main__':
-    message = input('\nВведите сообщение: ')
-    key = int(input('Введите ключ: '))
+    
+    print('\nСООБЩЕНИЕ:\n')
+    message = open('message.txt', 'r').read()
+
+    print(message)
+
+    key = int(input('\nВВЕДИТЕ КЛЮЧ:'))
 
     #lck_length = int(input('Введите длину конгруэнтной последовательности: '))
     lck_length = len(message) * 2
 
-    #M= input('Введите M: ')
-    #A = input('Введите А: ')
-    #C = input('Введите C: ')
+    #M= int(input('Введите M: '))
+    #A = int(input('Введите А: '))
+    #C = int(input('Введите C: '))
 
-    M = 63949 #65713
-    A = 15357
-    C = 33413
+    M = 65519 #63949
+    #A = 65520 
+    A = 262077
+    C = 333
+
+    print('НОД C и M: {}'.format(gcd(C, M)))
+    print('ПРОСТОЕ ЛИ ЧИСЛО M? : {}'.format(is_prime(M)))
+    '''
+    for i in range(M, 65536):
+        print('i: ', i)
+        print(is_prime(i))
+        print()
+    '''
 
     LCK_SEQ = get_lck_seq(A, C, M, lck_length)
 
