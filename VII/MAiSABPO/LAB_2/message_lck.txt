@@ -1,0 +1,85 @@
+Information security, sometimes shortened to InfoSec, is the practice of preventing unauthorized access, use, 
+disclosure, disruption, modification, inspection, recording or destruction of information. 
+It is a general term that can be used regardless of the form the data may take. 
+The chief area of concern for the field of information security is the balanced protection of the Confidentiality, 
+Integrity and Availability of data, also known as the CIA Triad, while maintaining a focus on efficient policy 
+implementation and no major hampering of organization productivity.Information security threats come in many different forms. 
+Some of the most common threats today are software attacks, theft of intellectual property, identity theft, 
+theft of equipment or information, sabotage, and information extortion. Most people have experienced 
+software attacks of some sort.Governments, military, corporations, financial institutions, hospitals 
+and private businesses amass a great deal of confidential information about their employees, customers, 
+products, research and financial status. Most of this information is now collected, processed and stored 
+on electronic computers and transmitted across networks to other computers.
+
+Любая утечка информации может привести к серьезным проблемам для компании — 
+от значительных финансовых убытков до полной ликвидации. 
+Конечно, проблема утечек появилась не сегодня, промышленный шпионаж и 
+переманивание квалифицированных специалистов существовали еще и до эпохи компьютеризации. 
+Но именно с появлением ПК и интернета возникли новые приемы незаконного получения информации. 
+Если раньше для этого необходимо было украсть и вынести из фирмы целые кипы бумажных документов, 
+то сейчас огромные объемы важных сведений можно запросто слить на флэшку, помещающуюся в портмоне, 
+отправить по сети, прибегнув к использованию семейства руткитов, троянов, бэкдоров, кейлоггеров и ботнетов, 
+либо просто уничтожить посредством вирусов, устроив диверсию.
+
+Информационная безопасность — защищённость информации и поддерживающей инфраструктуры 
+от случайных или преднамеренных воздействий естественного или искусственного характера, 
+которые могут нанести неприемлемый ущерб субъектам информационных отношений.
+from being read should a message fall into the wrong hands, but for the most part protection 
+was achieved through the application of procedural handling controls. Sensitive information was marked up 
+to indicate that it should be protected and transported by trusted persons, guarded and stored in a 
+secure environment or strong box. As postal services expanded, governments created 
+official organizations to intercept, decipher, read and reseal letters.
+
+In the mid-19th century more complex classification systems were 
+developed to allow governments to manage their information according to the degree of sensitivity. 
+The British Government codified this, to some extent, with the publication of the Official Secrets Act in 1889. 
+By the time of the First World War, multi-tier classification systems were used to communicate information 
+to and from various fronts, which encouraged greater use of code making and breaking sections 
+in diplomatic and military headquarters. In the United Kingdom this led to the creation of the 
+Government Code and Cypher School in 1919. Encoding became more sophisticated between
+
+дной из самых опасных на сегодняшний день угроз информационной безопасности являются компьютерные вирусы. 
+Это подтверждается многомиллионным ущербом, который несут компании в результате вирусных атак. 
+В последние годы существенно увеличилась их частота и уровень ущерба. 
+По мнению экспертов, это можно объяснить появлением новых каналов проникновения вирусов. 
+На первом месте по-прежнему остается почта, но, как показывает практика, вирусы способны 
+проникать и через программы обмена сообщениями, такие как ICQ и другие. 
+Увеличилось и количество объектов для возможных вирусных атак. 
+Если раньше атакам подвергались в основном серверы стандартных веб-служб, то 
+сегодня вирусы способны воздействовать и на межсетевые экраны, коммутаторы, мобильные устройства, маршрутизаторы.
+
+Selecting proper controls and implementing those will initially help an organization to bring down risk to acceptable levels. 
+Control selection should follow and should be based on the risk assessment. 
+Controls can vary in nature but fundamentally they are ways of protecting the confidentiality, integrity or availability of information. 
+ISO/IEC 27001 has defined controls in different areas. Organizations can implement additional controls according to requirement of the organization. 
+ISO/IEC 27002 is a guideline for organizational information security standards.
+
+Information security must protect information throughout the life span of the information, 
+from the initial creation of the information on through to the final disposal of the information. 
+The information must be protected while in motion and while at rest. During its lifetime, 
+information may pass through many different information processing systems and through many 
+different parts of information processing systems. 
+The building up, layering on and overlapping of security measures is called defense in depth. 
+In contrast to a metal chain, which is famously only as strong as its weakest link, 
+the defense-in-depth aims at a structure where, should one defensive measure fail, other measures will continue to provide protection.
+
+Authentication is the act of verifying a claim of identity. 
+When John Doe goes into a bank to make a withdrawal, he tells the bank 
+teller he is John Doe—a claim of identity. The bank teller asks to see a photo ID, so he hands the teller his driver's license. 
+The bank teller checks the license to make sure it has John Doe printed on it and compares the photograph on the 
+license against the person claiming to be John Doe. If the photo and name match the person, then the teller 
+has authenticated that John Doe is who he claimed to be. Similarly by entering the correct password, 
+the user is providing evidence that he/she is the person the username belongs to.
+
+Иногда руководители компаний пытаются сэкономить на покупке лицензионного ПО. 
+Но следует знать, что нелицензионные программы не дают защиты от мошенников, 
+заинтересованных в краже информации с помощью вирусов. Обладатель нелицензионного 
+ПО не получает технической поддержки, своевременных обновлений, предоставляемых компаниями-разработчиками. 
+Вместе с ним он покупает и вирусы, способные нанести вред системе компьютерной безопасности.
+
+Change management is a formal process for directing and controlling alterations to the information processing environment. 
+This includes alterations to desktop computers, the network, servers and software. 
+The objectives of change management are to reduce the risks posed by changes 
+to the information processing environment and improve the stability and reliability of the processing environment as changes are made. 
+It is not the objective of change management to prevent or hinder necessary changes from being implemented.
+
