@@ -1,4 +1,7 @@
+import os
+
 import numpy as np
+import codecs
 
 from math import sqrt
 from fractions import gcd
@@ -10,10 +13,25 @@ class Common():
         pass
 
     def read_file(self, file_name):
-        return open(file_name, 'r').read()
+        #return open(file_name, 'r').read()
+        return codecs.open(file_name, 'r', 'utf-8').read()
 
-    def write_to_file(self, file_name, line):
-        return open(file_name, 'w').write(line)
+    def write_to_file(self, file_name, line, mode = 'w'):
+        open(file_name, mode).write(line)
+    
+    @staticmethod
+    def rem_file(file_name):
+        try:
+            os.remove(file_name)
+        except:
+            pass
+
+    @staticmethod
+    def int_to_bin(number, bit_cap):
+        return bin(number)[2:].zfill(bit_cap)
+    @staticmethod
+    def bin_to_int(number):
+        return int(number,2)
 
     def prime_test(self, number):
         if (number < 1):
@@ -128,4 +146,35 @@ class Common():
             #print('left: ', left, 'pow_2: ', pow_2, 'pow_n:', pow_n)
             power = left
         
-        print(pow_n)
+        #print(pow_n)
+        return pow_n
+
+    def chunk_to_int(self, chunk, stride, bit_cap):
+
+        chunk_bin = ''
+
+        for letter in chunk:
+            letter_number = ord(letter)
+            chunk_bin += self.int_to_bin(letter_number, bit_cap)
+        chunk_int = self.bin_to_int(chunk_bin)
+        
+        return chunk_int, chunk_bin
+        
+
+    def bin_to_chunk(self, number, stride, bit_cap):
+            
+        chunk_symb = ''
+
+        number_bin = self.int_to_bin(number, bit_cap * stride)
+        #print(number_bin)
+        i = 0
+
+        for counter in range(0, stride):
+            sub_bin = number_bin[i:i + bit_cap]
+            i += bit_cap
+            chunk_symb += chr(self.bin_to_int(sub_bin))
+            #print(sub_bin)
+
+        return chunk_symb 
+
+        
