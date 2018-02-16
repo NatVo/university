@@ -12,9 +12,12 @@ class Common():
     def __init__(self):
         pass
 
-    def read_file(self, file_name):
-        #return open(file_name, 'r').read()
+    def read_file_codecs(self, file_name):
         return codecs.open(file_name, 'r', 'utf-8').read()
+    
+    def read_file(self, file_name):
+        return open(file_name, 'r').read()
+   
 
     def write_to_file(self, file_name, line, mode = 'w'):
         open(file_name, mode).write(line)
@@ -126,7 +129,7 @@ class Common():
             pow_2 *= 2
         counter -= 1
         return counter
-
+    
     def dihotomy(self, number, power, mod):
 
         pow_2 = self.power_of_2(power)
@@ -161,7 +164,7 @@ class Common():
         return chunk_int, chunk_bin
         
 
-    def bin_to_chunk(self, number, stride, bit_cap):
+    def int_to_chunk(self, number, stride, bit_cap):
             
         chunk_symb = ''
 
@@ -176,5 +179,6 @@ class Common():
             #print(sub_bin)
 
         return chunk_symb 
-
-        
+    
+    def hash_func(self, number, q):
+        return (number + 7) % q
