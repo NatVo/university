@@ -31,10 +31,13 @@ class RSA(Common):
             chunk_hex = hex(chunk_dec)
             self.write_to_file(self.dec_path, chunk_hex + '\\', 'a')
     
-    def decode(self, message, stride, bit_cap, MOD, key, DS):
-       
-        out_message = ''
+    def decode(self, message, stride, bit_cap, MOD, key, DS_key):
+        
+        if (DS_key != None):
+            pass #!!!
 
+        out_message = ''
+        
         message_arr = message.split('\\')
 
         for i in message_arr:
@@ -111,12 +114,11 @@ class RSA(Common):
         return e
    
 
-    def prep_encode(self, FLAG, FLAG_DS):
+    def prep_encode(self, FLAG_DS):
         
         prime_p1, _ = self.prime_test(self.p1)
         prime_p2, _ = self.prime_test(self.p2)
         
-        #print(prime_p1, prime_p2)
 
         if (prime_p1 and prime_p2):
             
@@ -134,47 +136,39 @@ class RSA(Common):
 
             print('\nЗакрытый ключ: ({}, {})'.format(N, d))
             print('\nОткрытый ключ: ({}, {})'.format(_N, e))
-
-            #self.dihotomy(25331478, 1472, 77)
-            #print(pow(25331478, 1472) % 77)
             
             message = self.read_file(self.mess_path)
             print('\nИсходное сообщение: \n{}'.format(message))
             
-            if (FLAG):
-                self.encode_decode(message, 4, 8, int(_N), int(e), 'decode')
-            else:
-                self.encode(message, 4, 8, int(_N), int(e))
+            #!=====================================================!
+            #self.encode_decode(message, 4, 8, int(_N), int(e), 'decode')
+            self.encode(message, 4, 8, _N, e)
            
             print('СООБЩЕНИЕ ЗАШИФРОВАНО -> dec_meassage.txt\n')
             print('='*100)
             
             if (FLAG_DS):
-                ds = DigitalSignature(103)
-                ds.prep_ds_enc(True)
+                ds = DigitalSignature()
+                ds.prep_ds_enc(False) #True - multy_DS, False - single_DS
 
         else:
             print('Числа p1 и / или p2 не простые')
    
-    def prep_decode(self, FLAG, FLAG_DS):
-        if (FLAG_DS):
-            pass
+    def prep_decode(self, FLAG_DS):
         
-        message = self.read_file_codecs(self.dec_path)
+        y = None
+        if (FLAG_DS):
+            message, ds = self.read_first_and_last(self.dec_path)
+            y = int(input('\nВведите открытый ключ Цифровой подписи: '))
+        else:
+            message = self.read_file_codecs(self.dec_path)
         print('\nВведите закрытый ключ:')
         
-        N = input('\nN = ')
-        d = input('\nd = ')
-        print(int(N))
-        if (FLAG):
-            self.encode_decode(message, 4, 8, int(N), int(d), 'decode')
-        else:
-            self.decode(message, 4, 8, int(N), int(d))
-
-    
-            
-            #ds = DigitalSignature(103)
-            #ds.prep_ds_enc()
+        N = int(input('\nN = '))
+        d = int(input('\nd = '))
+        
+        #self.encode_decode(message, 4, 8, int(N), int(d), 'decode')
+        self.decode(message, 4, 8, N, d, y)            
 
        
 if __name__ == '__main__':
@@ -187,6 +181,6 @@ if __name__ == '__main__':
             #131071)
     #e = 1498151
     #rsa = RSA(137, 311)
-    rsa.prep_encode(False, True)
+    rsa.prep_encode(True)
 
-    #rsa.prep_decode(False) 
+    #rsa.prep_decode(True) 

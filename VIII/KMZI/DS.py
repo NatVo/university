@@ -6,8 +6,7 @@ from utils.common import Common
 
 class DigitalSignature(Common):
 
-    def __init__(self, q, dec_path = 'dec_message.txt'):
-        self.q = q
+    def __init__(self, dec_path = 'dec_message.txt'):
         self.dec_path = dec_path
     
     def get_p_1(self, q):
@@ -85,13 +84,14 @@ class DigitalSignature(Common):
         self.write_to_file(self.dec_path, total_ds, 'a')
 
     def prep_ds_enc(self, FLAG_MANY_DS):
+        q = int(input('\nВведите q = '))
 
-        prime_q, _ = self.prime_test(self.q)
+        prime_q, _ = self.prime_test(q)
         
         if (prime_q):
-            print('\nq = {}'.format(self.q))
+            print('\nq = {}'.format(q))
 
-            p, b = self.get_p_1(self.q)
+            p, b = self.get_p_1(q)
             print('\np = {}'.format(p))
             print('\nb = {}'.format(b))
             
@@ -100,10 +100,10 @@ class DigitalSignature(Common):
             #base = random.randint(0, 16)
             
             a = pow(base, b)
-            dih_gcd = self.dihotomy(a, self.q, p)
+            dih_gcd = self.dihotomy(a, q, p)
             print('a = {}, НОД a и p = {}'.format(a, dih_gcd))
 
-            x = int(input('\nВведите x - секртеный ключ: '))
+            x = int(input('\nВведите x - секрeтный ключ: '))
             #x = random.randint(0, 32)
 
             print('\nx - секретный ключ = {}'.format(x))
@@ -113,19 +113,10 @@ class DigitalSignature(Common):
             
             message = self.read_file_codecs(self.dec_path)
 
-            self.create_ds(message, self.q, a, p, x, FLAG_MANY_DS)
+            self.create_ds(message, q, a, p, x, FLAG_MANY_DS)
                 
         
         else:
             print('Число q некорректно!')
 
-            
 
-
-'''
-
-if __name__ == '__main__':
-    
-    DS = DigitalSignature(103)
-    DS.prep_ds_enc()
-'''

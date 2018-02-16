@@ -17,7 +17,17 @@ class Common():
     
     def read_file(self, file_name):
         return open(file_name, 'r').read()
-   
+    
+    def read_first_and_last(self, file_name):
+        total_line = ''
+
+        with open(file_name) as f:
+            for line in f:
+                total_line += line
+
+        total_line = total_line.split(line)[0]
+        
+        return total_line, line
 
     def write_to_file(self, file_name, line, mode = 'w'):
         open(file_name, mode).write(line)
@@ -32,6 +42,7 @@ class Common():
     @staticmethod
     def int_to_bin(number, bit_cap):
         return bin(number)[2:].zfill(bit_cap)
+    
     @staticmethod
     def bin_to_int(number):
         return int(number,2)
