@@ -17,7 +17,16 @@ class Common():
     
     def read_file(self, file_name):
         return open(file_name, 'r').read()
-   
+
+    def read_first_and_last(self, file_name):
+        total_line = ''
+
+        with open(file_name) as f:
+            for line in f:
+                total_line += line
+        total_line = total_line.split(line)[0]
+
+        return total_line, line
 
     def write_to_file(self, file_name, line, mode = 'w'):
         open(file_name, mode).write(line)
@@ -28,6 +37,18 @@ class Common():
             os.remove(file_name)
         except:
             pass
+
+    def get_sum_chunk_int(self, message):
+        message_arr = message.split('\\')
+        
+        total_int = 0
+        for i in message_arr:
+            try:
+                total_int += int(i, 0)
+            except:
+                pass
+        return total_int
+
 
     @staticmethod
     def int_to_bin(number, bit_cap):
