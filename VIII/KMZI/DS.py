@@ -105,8 +105,12 @@ class DigitalSignature(Common):
         self.write_to_file(self.dec_path, total_ds, 'a')
 
     def prep_ds_enc(self, FLAG_MANY_DS):
+        q = int(input('\nВведите q = '))
 
+<<<<<<< HEAD
         q = int(input('\nВведите простое число q: '))
+=======
+>>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
         prime_q, _ = self.prime_test(q)
         
         if (prime_q):
@@ -124,7 +128,7 @@ class DigitalSignature(Common):
             dih_gcd = self.dihotomy(a, q, p)
             print('a = {}, НОД a и p = {}'.format(a, dih_gcd))
 
-            x = int(input('\nВведите x - секртеный ключ: '))
+            x = int(input('\nВведите x - секрeтный ключ: '))
             #x = random.randint(0, 32)
 
             print('\nx - секретный ключ = {}'.format(x))
@@ -140,5 +144,8 @@ class DigitalSignature(Common):
         else:
             print('Число q некорректно!')
 
+<<<<<<< HEAD
             
+=======
+>>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
 
