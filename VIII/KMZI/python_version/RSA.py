@@ -31,7 +31,6 @@ class RSA(Common):
             chunk_hex = hex(chunk_dec)
             self.write_to_file(self.dec_path, chunk_hex + '\\', 'a')
     
-<<<<<<< HEAD
     def decode(self, message, ds, stride, bit_cap, MOD, key, FLAG_DS = False):
         valid = True
         if (FLAG_DS):
@@ -40,7 +39,6 @@ class RSA(Common):
         if (valid):         
             out_message = ''
             message_arr = message.split('\\')
-=======
     def decode(self, message, stride, bit_cap, MOD, key, DS_key):
         
         if (DS_key != None):
@@ -49,26 +47,26 @@ class RSA(Common):
         out_message = ''
         
         message_arr = message.split('\\')
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
+        
+        for i in message_arr:
+            try:
+                chunk_int = int(i, 0)
+            except:
+                pass
+            
+            chunk_bin = self.int_to_bin(chunk_int, stride * bit_cap)
 
-            for i in message_arr:
-                try:
-                    chunk_int = int(i, 0)
-                except:
-                    pass
-                
-                chunk_bin = self.int_to_bin(chunk_int, stride * bit_cap)
+            chunk_dec = self.dihotomy(chunk_int, key, MOD)
+            #chunk_dec_ = pow(chunk_int, key) % MOD
+            #print(chunk_bin, len(chunk_bin), chunk_int, chunk_dec)
 
-                chunk_dec = self.dihotomy(chunk_int, key, MOD)
-                #chunk_dec_ = pow(chunk_int, key) % MOD
-                #print(chunk_bin, len(chunk_bin), chunk_int, chunk_dec)
+            chunk_symb = self.int_to_chunk(chunk_dec, stride, bit_cap)
+            out_message += chunk_symb
 
-                chunk_symb = self.int_to_chunk(chunk_dec, stride, bit_cap)
-                out_message += chunk_symb
-
-            if (FLAG_DS):
-                print('\nЦИФРОВАЯ ПОДПИСЬ КОРРЕКТНА')
+        if (FLAG_DS):
+            print('\nЦИФРОВАЯ ПОДПИСЬ КОРРЕКТНА')
             print('\nРасшифрованное сообщение: \n{}'.format(out_message))
+        
         else:
             print('\nЦИФРОВАЯ ПОДПИСЬ НЕКОРРЕКТНА!')
             
@@ -145,23 +143,22 @@ class RSA(Common):
             N = (self.p1 - 1) * (self.p2 - 1)
             print('\nN = {}'.format(N))
             
+            self.eiler_function(100)
             #e = self.get_e_1(N)
-            e = self.get_e_2(N)
-                    
+            #e = self.get_e_2(N)
+            '''       
             print('\nЧисло e = {}, НОД e и N = {}'.format(e, gcd(e, N)))
             d = self.euklid_ext(N, e)
             print('\nЧисло d = {}'.format(d))
 
             print('\nЗакрытый ключ: ({}, {})'.format(N, d))
             print('\nОткрытый ключ: ({}, {})'.format(_N, e))
-<<<<<<< HEAD
         
             message = self.read_file(self.mess_path)
             print('\nИсходное сообщение: \n{}'.format(message))
             
             self.encode_decode(message, 4, 8, int(_N), int(e), 'encode')
             #self.encode(message, 4, 8, int(_N), int(e))
-=======
             
             message = self.read_file(self.mess_path)
             print('\nИсходное сообщение: \n{}'.format(message))
@@ -169,26 +166,22 @@ class RSA(Common):
             #!=====================================================!
             #self.encode_decode(message, 4, 8, int(_N), int(e), 'decode')
             self.encode(message, 4, 8, _N, e)
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
            
             print('СООБЩЕНИЕ ЗАШИФРОВАНО -> dec_meassage.txt\n')
             print('='*150)
             
             if (FLAG_DS):
-<<<<<<< HEAD
                 print('\nИСПОЛЬЗУЕТСЯ ЦИФРОВАЯ ПОДПИСЬ\n')
                 DigitalSignature().prep_ds_enc(False)# True - multy DS; False - singlr DS
                
-=======
                 ds = DigitalSignature()
                 ds.prep_ds_enc(False) #True - multy_DS, False - single_DS
-
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
+            '''
         else:
             print('Числа p1 и / или p2 не простые')
    
     def prep_decode(self, FLAG_DS):
-<<<<<<< HEAD
+
         print('=' * 150)
         print('\nРАСШИФРОВЫВАНИЕ')
         
@@ -205,7 +198,6 @@ class RSA(Common):
     
         self.encode_decode(message, 4, 8, int(N), int(d), 'decode')
         #self.decode(message, ds, 4, 8, int(N), int(d), FLAG_DS)
-=======
         
         y = None
         if (FLAG_DS):
@@ -220,10 +212,8 @@ class RSA(Common):
         
         #self.encode_decode(message, 4, 8, int(N), int(d), 'decode')
         self.decode(message, 4, 8, N, d, y)            
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
 
-   
-       
+
 if __name__ == '__main__':
     #rsa = RSA(47,71)
     #rsa = RSA(11, 7)
@@ -234,11 +224,10 @@ if __name__ == '__main__':
             #131071)
     #e = 1498151
     #rsa = RSA(137, 311)
-<<<<<<< HEAD
+
     rsa.prep_encode(False) #True - use DS / False - not use DS
     rsa.prep_decode(False) #True - use DS / False - not use DS
-=======
+
     rsa.prep_encode(True)
 
     #rsa.prep_decode(True) 
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c

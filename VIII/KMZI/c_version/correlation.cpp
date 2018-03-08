@@ -12,7 +12,7 @@ template <typename Cor> Correlation <Cor>::Correlation()
 {
     std::cout << "\nСГЕНЕРИРОВАННЫЙ КЛЮЧ: \n" << std::endl;
     line = generate_key();
-    std::cout << line << std::endl;
+    std::cout << line << "\n" << std::endl;
     
     //std::bitset<64> sub_str = line_slice(line, 0, 64);
     //std::cout << "\n" << sub_str << std::endl;
@@ -27,7 +27,7 @@ template <typename Cor> Correlation <Cor>::Correlation(Cor input)
     std::cout << line << std::endl;
 }
 
-template <typename Cor> void Correlation <Cor>::iter_seq(int stride)
+template <typename Cor> void Correlation <Cor>::iter_seq(int stride, bool flag)
 {
     int start = 0;
 
@@ -36,14 +36,18 @@ template <typename Cor> void Correlation <Cor>::iter_seq(int stride)
 
     Common<int> com_obj;
 
+    if (flag) { std::cout << "ПАКФ" << std::endl; }
+    else { std::cout << "ААКФ" << std::endl; } 
+
     while ((start + stride) <= (int) line.length())
     {
         std::string sub_str = line_slice(line, start, stride);
         std::cout << "исходная подстрока: \n" << sub_str << "\n" << std::endl;
        
-        tmp_seq = pakf(sub_str);
-        com_obj.output_vector(tmp_seq);
+        if (flag) { tmp_seq = pakf(sub_str); }
+        else { tmp_seq = aakf(sub_str); }
         
+        com_obj.output_vector(tmp_seq);
         output_seq = com_obj.concat_vector(output_seq, tmp_seq);
 
         start += stride;
@@ -75,7 +79,7 @@ template <typename Cor> std::vector<int> Correlation <Cor>::pakf(std::string l)
     for (int i = l.length() - 1; i > 0; i--)
     {
         std::string new_l = add_string_part(l, i);
-        //std::cout << new_l << std::endl;
+        std::cout << new_l << std::endl;
         std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(new_l);      
         xor_int =  xor_l.to_ullong(); 
         int h_dist = hamming_dist(xor_int);
@@ -86,13 +90,43 @@ template <typename Cor> std::vector<int> Correlation <Cor>::pakf(std::string l)
         std::cout << xor_int << std::endl;
         std::cout << h_dist << std::endl;
         std::cout << "\n------------------" << std::endl;
-        */
-
-        
-
+        */ 
     }
     
     return pakf_seq;
+}
+
+template <typename Cor> std::vector<int> Correlation <Cor>::aakf(std::string l)
+{
+    std::vector<int> aakf_seq;
+    unsigned long long int xor_int;
+
+    std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(l);      
+    xor_int =  xor_l.to_ullong(); 
+    int h_dist = hamming_dist(xor_int);
+
+    aakf_seq.push_back(64 - h_dist);
+
+    for (int i = 0; i < (int) l.length(); i++)
+    {
+        std::string new_l = l.substr(0, (l.length() - i));
+        new_l = add_zeroes(new_l, 64);
+        std::cout << new_l << std::endl;
+        
+        std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(new_l);      
+        xor_int =  xor_l.to_ullong(); 
+        int h_dist = hamming_dist(xor_int);
+
+        aakf_seq.push_back(h_dist);
+        /*     
+        std::cout <<  xor_l << std::endl;
+        std::cout << xor_int << std::endl;
+        std::cout << h_dist << std::endl;
+        std::cout << "\n------------------" << std::endl;
+        */ 
+    }
+    
+    return aakf_seq;
 }
 
 template <typename Cor> int Correlation <Cor>::hamming_dist(unsigned long long int number)
@@ -131,7 +165,7 @@ template <typename Cor> std::string Correlation <Cor>::add_string_part(std::stri
 
 template <typename Cor> std::string Correlation <Cor>::add_zeroes(std::string l, int stride)
 {
-    if (l.length() < stride)
+    if ( (int) l.length() < stride)
     {
         return std::string(stride - l.length(), '0') + l;
     }            

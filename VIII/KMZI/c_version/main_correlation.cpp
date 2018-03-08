@@ -14,7 +14,7 @@ int main()
   std::cout << "test" << std::endl;
   
   Correlation<std::string> line;
-  line.iter_seq(64);
+  line.iter_seq(64, 0);
 
   return 0;
 }

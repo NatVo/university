@@ -11,9 +11,11 @@ template <typename Cor> class Correlation : public Common<Cor>
 {
   private: 
     std::string line;
+
     std::string generate_key();
     
     std::vector<int> pakf(std::string l);
+    std::vector<int> aakf(std::string l);
     
     int hamming_dist(unsigned long long int number);
     std::string line_slice(std::string l, int start, int stride);
@@ -23,7 +25,7 @@ template <typename Cor> class Correlation : public Common<Cor>
   public:
     Correlation ();
     Correlation(Cor input);
-    void iter_seq(int stride);
+    void iter_seq(int stride, bool flag);
 
 };
 

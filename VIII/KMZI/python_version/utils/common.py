@@ -17,25 +17,13 @@ class Common():
     
     def read_file(self, file_name):
         return open(file_name, 'r').read()
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
     def read_first_and_last(self, file_name):
         total_line = ''
 
         with open(file_name) as f:
             for line in f:
                 total_line += line
-<<<<<<< HEAD
-        total_line = total_line.split(line)[0]
-
-=======
-
-        total_line = total_line.split(line)[0]
-        
->>>>>>> d080f5b2c5b7ae68872de5717c41812dd72b2a8c
         return total_line, line
 
     def write_to_file(self, file_name, line, mode = 'w'):
@@ -97,9 +85,9 @@ class Common():
             
             fact.append(number)
         
-        #print(fact)
+        print(fact)
         unique_fact = list(set(fact))
-        #print(unique_fact)
+        print(unique_fact)
         
         for i in range(len(unique_fact)):   
             fact.remove(unique_fact[i])
@@ -110,10 +98,7 @@ class Common():
         #print(fact, unique_fact)
 
         return (np.prod(fact) * np.prod(unique_fact))
-    
-    def gcd(self):
-        pass
-    
+        
     
     def find_mutually_prime(self, number):
         
