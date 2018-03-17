@@ -6,6 +6,7 @@
 #include <iostream>
 #include <bitset>
 
+#include <set>
 #include <vector>
 #include <tuple>
 
@@ -62,8 +63,19 @@ template <typename R> void RSA <R>::set_parameters()
     
      
     std::cout << "_N = " << _N << " N = " << N << std::endl;    
-    unsigned int e_func = common_rsa.euler_function(N);
-    std::cout << "euler_func = " << e_func << std::endl;
+		
+    std::tuple<unsigned int, std::set<unsigned int>> euler;
+    euler = common_rsa.euler_function(_N);
+		unsigned int e_func = std::get<0>(euler);
+    
+    std::cout << "функция Эйлера для числа _N " << _N  << " : "<< e_func << std::endl;
+    unsigned int e = common_rsa.atkin(N);
+    std::cout << "число e: " << e << std::endl;
+    unsigned int d = common_rsa.euklid_ext(N, e);
+    std::cout << "число d: " << d << std::endl;
+
+    common_rsa.write_file(333);
+
     //std::vector<unsigned> m_prime = common_rsa.mutually_prime_simple(N);
     //common_rsa.output_vector(m_prime);
 }

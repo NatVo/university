@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-//g++ -o rsa 
+//g++ -o rsa main_rsa.cpp rsa.cpp 
 
 int main()
 {

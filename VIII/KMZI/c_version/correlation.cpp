@@ -6,127 +6,149 @@
 #include <iostream>
 #include <bitset>
 #include <vector>
+#include <cmath>
 #include <smmintrin.h>
 
-template <typename Cor> Correlation <Cor>::Correlation()
+template <typename Cor> Correlation <Cor>::Correlation(int max_length)
 {
     std::cout << "\nСГЕНЕРИРОВАННЫЙ КЛЮЧ: \n" << std::endl;
-    line = generate_key();
-    std::cout << line << "\n" << std::endl;
-    
+    line = generate_key(max_length);
+
+    int full_length = ceil_length(line, 64);
+    line_full = add_zeroes(line, full_length, 0);
+
+    std::cout << "исходная строка:" << line << std::endl;
+    //std::cout << "полная исходная строка:" << line_full << std::endl;
+
     //std::bitset<64> sub_str = line_slice(line, 0, 64);
     //std::cout << "\n" << sub_str << std::endl;
 
 }
 
-template <typename Cor> Correlation <Cor>::Correlation(Cor input)
+template <typename Cor> Correlation <Cor>::Correlation(std::string input)
 {
+
     line = input;
-    if (line.length() < 1024) { line = add_zeroes(line, 1024); }
-    
-    std::cout << line << std::endl;
+    //if (line.length() < 1024) { line = add_zeroes(line, 1024); }    
+
+    int full_length = ceil_length(line, 64);
+    line_full = add_zeroes(line, full_length, 0);
+
+    std::cout << "исходная строка:" << line << std::endl;
+    //std::cout << "полная исходная строка:" << line_full << std::endl;
+ 
 }
 
-template <typename Cor> void Correlation <Cor>::iter_seq(int stride, bool flag)
+template <typename Cor> std::string Correlation <Cor>::generate_key (int max_length)
 {
-    int start = 0;
+    std::string l = "";
+    
+    for (int i = 0; i < max_length; i++) { l = l + std::to_string(rand() % 2); }
 
-    std::vector<int> tmp_seq;
+    return l;
+}
+
+
+
+template <typename Cor> std::vector<int> Correlation <Cor>::pakf(int stride)
+{
     std::vector<int> output_seq;
 
     Common<int> com_obj;
 
-    if (flag) { std::cout << "ПАКФ" << std::endl; }
-    else { std::cout << "ААКФ" << std::endl; } 
+    std::cout << "ПАКФ" << std::endl; 
 
-    while ((start + stride) <= (int) line.length())
+    for (int i = line.length(); i > 0; i--)
     {
-        std::string sub_str = line_slice(line, start, stride);
-        std::cout << "исходная подстрока: \n" << sub_str << "\n" << std::endl;
+
+        std::string new_line = add_string_part(line, i);
+        //std::cout << new_line << std::endl;
+        long int element = correlation_element(new_line, 64, 0);
+        output_seq.push_back(element);
        
-        if (flag) { tmp_seq = pakf(sub_str); }
-        else { tmp_seq = aakf(sub_str); }
+    }
+    //com_obj.output_vector(output_seq);
+    std::string result = com_obj.vector_to_str(output_seq);
+    std::cout << result << std::endl;
+
+    std::string file_path = "pakf.txt";
+    com_obj.write_file(result, file_path);
+
+    std::cout << "длина последовательности ПАКФ: " << output_seq.size() << std::endl;
+
+    return output_seq;
+   
+}      
+
+template <typename Cor> std::vector<int> Correlation <Cor>::aakf(int stride)
+{
+    std::vector<int> output_seq;
+
+    Common<int> com_obj;
+
+    std::cout << "ААКФ" << std::endl; 
+
+    for (int i = 0; i < (int) line.length(); i++)
+    {
+        std::string new_line = line.substr(0, (line.length() - i));
+        new_line = add_zeroes(new_line, line.length(), 1);
+
+        //std::cout << new_line << std::endl;
         
-        com_obj.output_vector(tmp_seq);
-        output_seq = com_obj.concat_vector(output_seq, tmp_seq);
+        long int element = correlation_element(new_line, 64, 0);
+        output_seq.push_back(element);
+       
+    }
+    //com_obj.output_vector(output_seq);
+    std::string result = com_obj.vector_to_str(output_seq);
+    std::cout << result << std::endl;
+
+    std::string file_path = "aakf.txt";
+    com_obj.write_file(result, file_path);
+ 
+    std::cout << "длина последовательности ААКФ: " << output_seq.size() << std::endl;
+
+    return output_seq;
+   
+}      
+
+
+template <typename Cor> long int Correlation <Cor>::correlation_element(std::string l, int stride, bool front)
+{
+    int start = 0;
+    int sum = 0;
+    unsigned long long int xor_int;
+    int full_length = ceil_length(l, stride);
+    
+    l = add_zeroes(l, full_length, front);
+
+    //std::cout << "str with 0: \n" << l << "\n" << std::endl;
+    //std::cout << l.length() << std::endl;
+   
+    while ((start + stride) <= (int) l.length())
+    {
+        std::string sub_str = line_slice(l, start, stride);
+        std::string sub_str_main = line_slice(line_full, start, stride);
+
+        //std::cout << "исходная подстрока: \n" << sub_str << "\n" << std::endl;
+        //std::cout << "исходная подстрока_: \n" << sub_str_main << "\n" << std::endl;
+
+        std::bitset<64> xor_lines = std::bitset<64>(sub_str) ^ std::bitset<64>(sub_str_main);      
+
+        xor_int =  xor_lines.to_ullong(); 
+        int h_dist = hamming_dist(xor_int);
+
+        //std::cout << h_dist << std::endl;
+
+        sum += h_dist;
 
         start += stride;
-
-        std::cout << std::endl;
     }
 
-    com_obj.output_vector(output_seq);
+    //std::cout << "sum = " << line.length() - sum << std::endl;
 
-    /*
-    std::string last_line = line_slice(line, start, (line.length() - start));
-    last_line = add_zeroes(last_line, stride);
-    std::cout << last_line << std::endl;    
-    */
-}        
-
-template <typename Cor> std::vector<int> Correlation <Cor>::pakf(std::string l)
-{
-    std::vector<int> pakf_seq;
-    unsigned long long int xor_int;
-
-    std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(l);      
-    xor_int =  xor_l.to_ullong(); 
-    int h_dist = hamming_dist(xor_int);
-
-    pakf_seq.push_back(64 - h_dist);
-    
-
-    for (int i = l.length() - 1; i > 0; i--)
-    {
-        std::string new_l = add_string_part(l, i);
-        std::cout << new_l << std::endl;
-        std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(new_l);      
-        xor_int =  xor_l.to_ullong(); 
-        int h_dist = hamming_dist(xor_int);
-
-        pakf_seq.push_back(h_dist);
-        /*        
-        std::cout <<  xor_l << std::endl;
-        std::cout << xor_int << std::endl;
-        std::cout << h_dist << std::endl;
-        std::cout << "\n------------------" << std::endl;
-        */ 
-    }
-    
-    return pakf_seq;
-}
-
-template <typename Cor> std::vector<int> Correlation <Cor>::aakf(std::string l)
-{
-    std::vector<int> aakf_seq;
-    unsigned long long int xor_int;
-
-    std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(l);      
-    xor_int =  xor_l.to_ullong(); 
-    int h_dist = hamming_dist(xor_int);
-
-    aakf_seq.push_back(64 - h_dist);
-
-    for (int i = 0; i < (int) l.length(); i++)
-    {
-        std::string new_l = l.substr(0, (l.length() - i));
-        new_l = add_zeroes(new_l, 64);
-        std::cout << new_l << std::endl;
-        
-        std::bitset<64> xor_l = std::bitset<64>(l) ^ std::bitset<64>(new_l);      
-        xor_int =  xor_l.to_ullong(); 
-        int h_dist = hamming_dist(xor_int);
-
-        aakf_seq.push_back(h_dist);
-        /*     
-        std::cout <<  xor_l << std::endl;
-        std::cout << xor_int << std::endl;
-        std::cout << h_dist << std::endl;
-        std::cout << "\n------------------" << std::endl;
-        */ 
-    }
-    
-    return aakf_seq;
+    return line.length() - sum;
+   
 }
 
 template <typename Cor> int Correlation <Cor>::hamming_dist(unsigned long long int number)
@@ -136,16 +158,6 @@ template <typename Cor> int Correlation <Cor>::hamming_dist(unsigned long long i
 }
             
      
-
-template <typename Cor> std::string Correlation <Cor>::generate_key ()
-{
-    std::string l = "";
-    
-    for (int i = 0; i < 1024; i++) { l = l + std::to_string(rand() % 2); }
-
-    return l;
-}
-
 template <typename Cor> std::string Correlation <Cor>::line_slice (std::string l, int start, int stride)
 {
     std::string slice = l.substr(start, stride);
@@ -163,13 +175,22 @@ template <typename Cor> std::string Correlation <Cor>::add_string_part(std::stri
     return part_1 + part_2;
 }
 
-template <typename Cor> std::string Correlation <Cor>::add_zeroes(std::string l, int stride)
+template <typename Cor> std::string Correlation <Cor>::add_zeroes(std::string l, int full_length, bool begin)
 {
-    if ( (int) l.length() < stride)
+    if ( (int) l.length() < full_length)
     {
-        return std::string(stride - l.length(), '0') + l;
+        if (begin) { return std::string(full_length - l.length(), '0') + l; }
+        else { return l + std::string(full_length - l.length(), '0'); }
     }            
 
     else { return l; }
+}
+
+
+template <typename Cor> int Correlation <Cor>::ceil_length(std::string l, int stride)
+{
+    float dev = (float) l.length() / (float) stride;
+    return stride * ceil(dev);
+   
 }
 

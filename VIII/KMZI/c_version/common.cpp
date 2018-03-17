@@ -41,6 +41,32 @@ template <typename Com> std::string Common<Com>::read_file(std::string file_path
     return message.str();
 }    
 
+template <typename Com> void Common<Com>::write_file(std::string input, std::string file_path)
+{
+    //std::string file_path = "./log.txt";
+    //std::cout << c->file_path << std::endl;
+    std::ofstream f;
+    f.open (file_path);
+    f << input;
+    f.close();
+    
+    
+}    
+
+template <typename Com> std::string Common<Com>::vector_to_str(std::vector<Com> vect)
+{
+    std::string line = "";
+        
+    for (unsigned int i = 0; i < vect.size(); i++)
+    {        
+        line = line +  std::to_string(vect[i]) + " ";
+    }
+
+    return line;
+        
+}
+
+
 template <typename Com> std::tuple<Com, Com> Common <Com>::prime_check_simple(unsigned int number)
 {		
 		std::tuple<bool, int> result;
@@ -133,9 +159,22 @@ template <typename Com> unsigned int Common<Com>::euler_count_help(std::vector<u
 		return P;
 }
 
-template <typename Com> unsigned int Common <Com>::euler_function(unsigned int number)
+template <typename Com> std::set<unsigned int> Common<Com>::return_set(std::vector<unsigned int> vect)
+{
+ 		std::set<unsigned int> unique_v(vect.begin(), vect.end());
+    return unique_v;  
+}
+
+//template <typename Com> std::set<unsigned int> Common <Com>::euler_function(unsigned int number, bool mult)
+
+
+template <typename Com> std::tuple<unsigned int, std::set<unsigned int>> Common <Com>::euler_function(unsigned int number)
 {
 		std::vector<unsigned int> fact;
+		unsigned int P1;
+		unsigned int P2;
+    std::set<unsigned int> unique_v; 
+    //std::tuple<unsigned int, std::set<unsigned int>> result;
 
 		std::tuple<bool, int> p_test = prime_check_simple(number);
 		bool prime = std::get<0>(p_test);
@@ -161,15 +200,44 @@ template <typename Com> unsigned int Common <Com>::euler_function(unsigned int n
 				//std::cout << std::endl;
 				fact.push_back(number);
 				//output_vector(fact);
-
-				unsigned int P1 = euler_count_help(fact, 0);
-				unsigned int P2 = euler_count_help(fact, 1);
-
+        
+				P1 = euler_count_help(fact, 0);
+				P2 = euler_count_help(fact, 1);
+        unique_v = return_set(fact);
 				//std::cout << "P1 = " << P1 << std::endl;
 				//std::cout << "P2 = " << P2 << std::endl;
-				return P1 * P2;
+        //std::cout << P1 * P2 << std::endl;
+				return {P1 * P2, unique_v};
 		}
 
 }
 
+template <typename Com> unsigned int Common <Com>::atkin(unsigned int number)
+{
+    std::vector<int> first_prime = {1,7,11,13,17,19,23,29,31,37,41,43,47,49,53,59};
+     
+    std::tuple<unsigned int, std::set<unsigned int>> euler;
+    euler = euler_function(number);
+    std::set<unsigned int>mult = std::get<1>(euler);
+		std::set<unsigned int>::iterator i;
+    bool flag = 0;
+    unsigned int mutually_prime;
+
+    while ( !flag )
+    {
+        flag = 1;
+        mutually_prime = 1 + rand() % (number / 5);
+        //std::cout << "\n" << mutually_prime << std::endl;
+        i = mult.begin();
+        while (i != mult.end())
+        {
+            if (mutually_prime % *i == 0) { flag = 0; }
+            //std::cout << *i << std::endl;
+            i++;
+        }
+    }
+    
+    return mutually_prime;   
+    
+}
 

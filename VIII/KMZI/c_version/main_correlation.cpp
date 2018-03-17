@@ -11,10 +11,11 @@
 int main()
 {
   setlocale(LC_ALL, "Russian");
-  std::cout << "test" << std::endl;
   
-  Correlation<std::string> line;
-  line.iter_seq(64, 0);
+  Correlation<std::string> line("1010101111001010101111000111001100110101011111010101110111111000110111");
+  line.pakf(64);
+  std::cout <<"==========================================================================" << std::endl;
+  line.aakf(64);
 
   return 0;
 }

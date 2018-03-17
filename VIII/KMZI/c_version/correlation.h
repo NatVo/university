@@ -11,21 +11,25 @@ template <typename Cor> class Correlation : public Common<Cor>
 {
   private: 
     std::string line;
+    std::string line_full;
 
-    std::string generate_key();
+    std::string generate_key(int max_length);
     
-    std::vector<int> pakf(std::string l);
-    std::vector<int> aakf(std::string l);
+    long int correlation_element(std::string l, int stride, bool front);
     
     int hamming_dist(unsigned long long int number);
     std::string line_slice(std::string l, int start, int stride);
-    std::string add_zeroes(std::string l, int stride);
+    std::string add_zeroes(std::string l, int full_length, bool begin);
     std::string add_string_part(std::string l, int chkpoint);
+    int ceil_length(std::string l, int stride);
         
   public:
-    Correlation ();
-    Correlation(Cor input);
-    void iter_seq(int stride, bool flag);
+    Correlation (int max_length);
+    Correlation(std::string input);
+
+    std::vector<int> pakf(int stride);
+    std::vector<int> aakf(int stride);
+
 
 };
 
