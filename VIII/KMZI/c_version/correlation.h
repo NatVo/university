@@ -12,7 +12,7 @@ template <typename Cor> class Correlation : public Common<Cor>
   private: 
     std::string line;
     std::string line_full;
-
+    int full_length;
     std::string generate_key(int max_length);
     
     long int correlation_element(std::string l, int stride, bool front);

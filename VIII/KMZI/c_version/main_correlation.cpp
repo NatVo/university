@@ -12,7 +12,7 @@ int main()
 {
   setlocale(LC_ALL, "Russian");
   
-  Correlation<std::string> line("1010101111001010101111000111001100110101011111010101110111111000110111");
+  Correlation<std::string> line("0001101");
   line.pakf(64);
   std::cout <<"==========================================================================" << std::endl;
   line.aakf(64);

@@ -14,7 +14,7 @@ template <typename Cor> Correlation <Cor>::Correlation(int max_length)
     std::cout << "\nСГЕНЕРИРОВАННЫЙ КЛЮЧ: \n" << std::endl;
     line = generate_key(max_length);
 
-    int full_length = ceil_length(line, 64);
+    full_length = ceil_length(line, 64);
     line_full = add_zeroes(line, full_length, 0);
 
     std::cout << "исходная строка:" << line << std::endl;
@@ -31,7 +31,7 @@ template <typename Cor> Correlation <Cor>::Correlation(std::string input)
     line = input;
     //if (line.length() < 1024) { line = add_zeroes(line, 1024); }    
 
-    int full_length = ceil_length(line, 64);
+    full_length = ceil_length(line, 64);
     line_full = add_zeroes(line, full_length, 0);
 
     std::cout << "исходная строка:" << line << std::endl;
@@ -94,8 +94,13 @@ template <typename Cor> std::vector<int> Correlation <Cor>::aakf(int stride)
         new_line = add_zeroes(new_line, line.length(), 1);
 
         //std::cout << new_line << std::endl;
+
+        std::string line_tmp = line.substr(i, (line.length() - i));
+        line_full = add_zeroes(line_tmp, new_line.length(), 1);
+        line_full = add_zeroes(line_full, full_length, 0);
         
         long int element = correlation_element(new_line, 64, 0);
+        element -= i;
         output_seq.push_back(element);
        
     }
@@ -147,7 +152,7 @@ template <typename Cor> long int Correlation <Cor>::correlation_element(std::str
 
     //std::cout << "sum = " << line.length() - sum << std::endl;
 
-    return line.length() - sum;
+    return line.length() - 2 * sum;
    
 }
 
