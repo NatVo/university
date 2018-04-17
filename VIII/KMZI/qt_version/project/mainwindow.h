@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <blockcipher.h>
 #include <rsa.h>
 
 namespace Ui {
@@ -17,12 +18,17 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ButtonRSA_clicked();
+    void on_ButtonVernam_clicked();
 
-    void on_ButtonBerlikamp_clicked();
+    void on_ButtonRSA_clicked();
+    void on_ButtonSequence_clicked();
+    void on_ButtonBlockCipher_clicked();
 
 private:
     Ui::MainWindow *ui;
+
+    RSA *rsaWindow;
+    BlockCipher *blockcipherWindow;
 };
 
 #endif // MAINWINDOW_H

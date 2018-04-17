@@ -6,6 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //RSA
+    rsaWindow = new RSA();
+    connect(rsaWindow, &RSA::startWindow, this, &MainWindow::show);
+
+    //Block Cipher
+    blockcipherWindow = new BlockCipher();
+    connect(blockcipherWindow, &BlockCipher::startWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -13,12 +21,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_ButtonVernam_clicked()
+{
+
+}
+
+void MainWindow::on_ButtonBlockCipher_clicked()
+{
+    rsaWindow->show();
+    this->close();
+}
+
 void MainWindow::on_ButtonRSA_clicked()
 {
-
+    blockcipherWindow->show();
+    this->close();
 }
 
-void MainWindow::on_ButtonBerlikamp_clicked()
+
+void MainWindow::on_ButtonSequence_clicked()
 {
 
 }
+
