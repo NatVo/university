@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <blockcipher.h>
 #include <rsa.h>
+#include <sequence.h>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,7 @@ private:
 
     RSA *rsaWindow;
     BlockCipher *blockcipherWindow;
+    Sequence *sequenceWindow;
 };
 
 #endif // MAINWINDOW_H

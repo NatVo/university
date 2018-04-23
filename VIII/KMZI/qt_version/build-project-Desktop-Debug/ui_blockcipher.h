@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'blockcipher.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -40,8 +40,8 @@ public:
 
     void retranslateUi(QWidget *BlockCipher)
     {
-        BlockCipher->setWindowTitle(QApplication::translate("BlockCipher", "Form", Q_NULLPTR));
-        ButtonBack->setText(QApplication::translate("BlockCipher", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", Q_NULLPTR));
+        BlockCipher->setWindowTitle(QApplication::translate("BlockCipher", "Form", 0));
+        ButtonBack->setText(QApplication::translate("BlockCipher", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0));
     } // retranslateUi
 
 };

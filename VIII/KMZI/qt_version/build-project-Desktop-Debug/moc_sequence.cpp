@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'blockcipher.h'
+** Meta object code from reading C++ file 'sequence.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../project/blockcipher.h"
+#include "../project/sequence.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'blockcipher.h' doesn't include <QObject>."
+#error "The header file 'sequence.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,28 +18,28 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_BlockCipher_t {
+struct qt_meta_stringdata_Sequence_t {
     QByteArrayData data[4];
-    char stringdata0[47];
+    char stringdata0[44];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_BlockCipher_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Sequence_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_BlockCipher_t qt_meta_stringdata_BlockCipher = {
+static const qt_meta_stringdata_Sequence_t qt_meta_stringdata_Sequence = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "BlockCipher"
-QT_MOC_LITERAL(1, 12, 11), // "startWindow"
-QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 21) // "on_ButtonBack_clicked"
+QT_MOC_LITERAL(0, 0, 8), // "Sequence"
+QT_MOC_LITERAL(1, 9, 11), // "startWindow"
+QT_MOC_LITERAL(2, 21, 0), // ""
+QT_MOC_LITERAL(3, 22, 21) // "on_ButtonBack_clicked"
 
     },
-    "BlockCipher\0startWindow\0\0on_ButtonBack_clicked"
+    "Sequence\0startWindow\0\0on_ButtonBack_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_BlockCipher[] = {
+static const uint qt_meta_data_Sequence[] = {
 
  // content:
        7,       // revision
@@ -67,10 +67,10 @@ static const uint qt_meta_data_BlockCipher[] = {
        0        // eod
 };
 
-void BlockCipher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Sequence::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        BlockCipher *_t = static_cast<BlockCipher *>(_o);
+        Sequence *_t = static_cast<Sequence *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->startWindow(); break;
@@ -81,8 +81,8 @@ void BlockCipher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (BlockCipher::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&BlockCipher::startWindow)) {
+            typedef void (Sequence::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Sequence::startWindow)) {
                 *result = 0;
             }
         }
@@ -90,26 +90,26 @@ void BlockCipher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     Q_UNUSED(_a);
 }
 
-const QMetaObject BlockCipher::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_BlockCipher.data,
-      qt_meta_data_BlockCipher,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject Sequence::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_Sequence.data,
+      qt_meta_data_Sequence,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *BlockCipher::metaObject() const
+const QMetaObject *Sequence::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *BlockCipher::qt_metacast(const char *_clname)
+void *Sequence::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_BlockCipher.stringdata0))
-        return static_cast<void*>(const_cast< BlockCipher*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Sequence.stringdata0))
+        return static_cast<void*>(const_cast< Sequence*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
-int BlockCipher::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Sequence::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -127,7 +127,7 @@ int BlockCipher::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void BlockCipher::startWindow()
+void Sequence::startWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }

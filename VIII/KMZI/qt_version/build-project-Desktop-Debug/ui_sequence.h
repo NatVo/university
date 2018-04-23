@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'rsa.ui'
+** Form generated from reading UI file 'sequence.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_RSA_H
-#define UI_RSA_H
+#ifndef UI_SEQUENCE_H
+#define UI_SEQUENCE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -19,37 +19,37 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_RSA
+class Ui_Sequence
 {
 public:
     QPushButton *ButtonBack;
 
-    void setupUi(QWidget *RSA)
+    void setupUi(QWidget *Sequence)
     {
-        if (RSA->objectName().isEmpty())
-            RSA->setObjectName(QStringLiteral("RSA"));
-        RSA->resize(400, 300);
-        ButtonBack = new QPushButton(RSA);
+        if (Sequence->objectName().isEmpty())
+            Sequence->setObjectName(QStringLiteral("Sequence"));
+        Sequence->resize(400, 300);
+        ButtonBack = new QPushButton(Sequence);
         ButtonBack->setObjectName(QStringLiteral("ButtonBack"));
         ButtonBack->setGeometry(QRect(10, 260, 111, 28));
 
-        retranslateUi(RSA);
+        retranslateUi(Sequence);
 
-        QMetaObject::connectSlotsByName(RSA);
+        QMetaObject::connectSlotsByName(Sequence);
     } // setupUi
 
-    void retranslateUi(QWidget *RSA)
+    void retranslateUi(QWidget *Sequence)
     {
-        RSA->setWindowTitle(QApplication::translate("RSA", "Form", 0));
-        ButtonBack->setText(QApplication::translate("RSA", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0));
+        Sequence->setWindowTitle(QApplication::translate("Sequence", "Form", 0));
+        ButtonBack->setText(QApplication::translate("Sequence", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class RSA: public Ui_RSA {};
+    class Sequence: public Ui_Sequence {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_RSA_H
+#endif // UI_SEQUENCE_H

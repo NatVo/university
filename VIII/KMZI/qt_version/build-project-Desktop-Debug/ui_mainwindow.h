@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -77,12 +77,12 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        ButtonSequence->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\273\320\265\320\264\320\276\320\262\320\260\321\202\320\265\320\273\321\214\320\275\320\276\321\201\321\202\320\270", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        ButtonSequence->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\273\320\265\320\264\320\276\320\262\320\260\321\202\320\265\320\273\321\214\320\275\320\276\321\201\321\202\320\270", 0));
         ButtonBerlikamp->setText(QString());
-        ButtonRSA->setText(QApplication::translate("MainWindow", "RSA + \320\255\320\246\320\237", Q_NULLPTR));
-        ButtonVernam->setText(QApplication::translate("MainWindow", "\320\222\320\265\321\200\320\275\320\260\320\274", Q_NULLPTR));
-        ButtonBlockCipher->setText(QApplication::translate("MainWindow", "\320\221\320\273\320\276\321\207\320\275\321\213\320\265 \321\210\320\270\321\204\321\200\321\213", Q_NULLPTR));
+        ButtonRSA->setText(QApplication::translate("MainWindow", "RSA + \320\255\320\246\320\237", 0));
+        ButtonVernam->setText(QApplication::translate("MainWindow", "\320\222\320\265\321\200\320\275\320\260\320\274", 0));
+        ButtonBlockCipher->setText(QApplication::translate("MainWindow", "\320\221\320\273\320\276\321\207\320\275\321\213\320\265 \321\210\320\270\321\204\321\200\321\213", 0));
     } // retranslateUi
 
 };
