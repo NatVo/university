@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //RSA
-    rsaWindow = new RSA();
-    connect(rsaWindow, &RSA::startWindow, this, &MainWindow::show);
+    rsaWindow = new RSAWindow();
+    connect(rsaWindow, &RSAWindow::startWindow, this, &MainWindow::show);
 
     //Block Cipher
     blockcipherWindow = new BlockCipher();
@@ -29,13 +29,14 @@ void MainWindow::on_ButtonVernam_clicked()
 
 void MainWindow::on_ButtonBlockCipher_clicked()
 {
-    rsaWindow->show();
+    blockcipherWindow->show();
     this->close();
+
 }
 
 void MainWindow::on_ButtonRSA_clicked()
 {
-    blockcipherWindow->show();
+    rsaWindow->show();
     this->close();
 }
 

@@ -74,8 +74,17 @@ template <typename R> void RSA <R>::set_parameters()
     unsigned int d = common_rsa.euklid_ext(N, e);
     std::cout << "число d: " << d << std::endl;
 
-    common_rsa.write_file(333);
-
+    common_rsa.write_file("e:" + std::to_string(e), "./buffer/rsa_buf.txt");
+    
+    rsa_apply(_N, N, e, d);
     //std::vector<unsigned> m_prime = common_rsa.mutually_prime_simple(N);
     //common_rsa.output_vector(m_prime);
 }
+
+
+template <typename R> void RSA <R>::rsa_apply(unsigned _N, unsigned N, unsigned int e, unsigned int d)
+{
+    
+
+}
+

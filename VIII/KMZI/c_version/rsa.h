@@ -16,6 +16,8 @@ template <typename R> class RSA : public Common<R>
     
     Common<unsigned> common_rsa;
 
+    void rsa_apply(unsigned _N, unsigned N, unsigned int e, unsigned int d);
+
   public:
     RSA();
     RSA(std::string m, int prime1, int prime2);

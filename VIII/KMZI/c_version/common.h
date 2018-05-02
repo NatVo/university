@@ -31,7 +31,9 @@ template <typename Com> class Common
     //std::set<unsigned int> euler_function(unsigned int number, bool mult);
     std::tuple<unsigned int, std::set<unsigned int>> euler_function(unsigned int number);
     unsigned int atkin(unsigned int number);
+
+    unsigned int dihotomy(int number);
+    //unsigned int chunk_to_int(std::string chunk);
 };
 
 #endif
-

@@ -241,3 +241,18 @@ template <typename Com> unsigned int Common <Com>::atkin(unsigned int number)
     
 }
 
+template <typename Com> unsigned int Common<Com>::dihotomy(int number)
+{
+    return 0;
+}
+
+
+template <typename Com> unsigned int Common<Com>::chunk_to_int(std::string chunk)
+{
+    for (int i = 0; i < chunk.length(); i++)
+    {
+        std::cout << (int) chunk[0] << endl;
+    }
+    //return std::bitset<8>(number).to_string();
+        
+}

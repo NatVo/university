@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <blockcipher.h>
-#include <rsa.h>
+#include <rsawindow.h>
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    RSA *rsaWindow;
+    RSAWindow *rsaWindow;
     BlockCipher *blockcipherWindow;
 };
 
