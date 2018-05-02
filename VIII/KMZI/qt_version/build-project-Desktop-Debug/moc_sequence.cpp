@@ -1,7 +1,11 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'sequence.h'
 **
+<<<<<<< HEAD
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.2)
+=======
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +16,21 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'sequence.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
+<<<<<<< HEAD
 #error "This file was generated using the moc from 5.9.2. It"
+=======
+#error "This file was generated using the moc from 5.5.1. It"
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+<<<<<<< HEAD
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+=======
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 struct qt_meta_stringdata_Sequence_t {
     QByteArrayData data[4];
     char stringdata0[44];
@@ -86,7 +97,10 @@ void Sequence::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             typedef void (Sequence::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Sequence::startWindow)) {
                 *result = 0;
+<<<<<<< HEAD
                 return;
+=======
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
             }
         }
     }
@@ -95,7 +109,11 @@ void Sequence::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
 
 const QMetaObject Sequence::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_Sequence.data,
+<<<<<<< HEAD
       qt_meta_data_Sequence,  qt_static_metacall, nullptr, nullptr}
+=======
+      qt_meta_data_Sequence,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 };
 
 
@@ -106,9 +124,15 @@ const QMetaObject *Sequence::metaObject() const
 
 void *Sequence::qt_metacast(const char *_clname)
 {
+<<<<<<< HEAD
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_Sequence.stringdata0))
         return static_cast<void*>(this);
+=======
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_Sequence.stringdata0))
+        return static_cast<void*>(const_cast< Sequence*>(this));
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
     return QWidget::qt_metacast(_clname);
 }
 
@@ -132,7 +156,12 @@ int Sequence::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Sequence::startWindow()
 {
+<<<<<<< HEAD
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP
+=======
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+}
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 QT_END_MOC_NAMESPACE

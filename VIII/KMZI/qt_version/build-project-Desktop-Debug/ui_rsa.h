@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'rsa.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -71,12 +71,17 @@ public:
 
     void retranslateUi(QWidget *RSA)
     {
+<<<<<<< HEAD
         RSA->setWindowTitle(QApplication::translate("RSA", "Form", Q_NULLPTR));
         ButtonBack->setText(QApplication::translate("RSA", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", Q_NULLPTR));
         label->setText(QApplication::translate("RSA", "\320\237\321\200\320\276\321\201\321\202\320\276\320\265 \321\207\320\270\321\201\320\273\320\276 1:", Q_NULLPTR));
         pushButton->setText(QApplication::translate("RSA", "\320\222\321\213\320\277\320\276\320\273\320\275\320\270\321\202\321\214", Q_NULLPTR));
         label_2->setText(QApplication::translate("RSA", "\320\237\321\200\320\276\321\201\321\202\320\276\320\265 \321\207\320\270\321\201\320\273\320\276 2:", Q_NULLPTR));
         error->setText(QString());
+=======
+        RSA->setWindowTitle(QApplication::translate("RSA", "Form", 0));
+        ButtonBack->setText(QApplication::translate("RSA", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0));
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
     } // retranslateUi
 
 };

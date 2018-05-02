@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //Block Cipher
     blockcipherWindow = new BlockCipher();
     connect(blockcipherWindow, &BlockCipher::startWindow, this, &MainWindow::show);
+
+    //Sequence
+    sequenceWindow = new Sequence();
+    connect(sequenceWindow , &Sequence::startWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +47,8 @@ void MainWindow::on_ButtonRSA_clicked()
 
 void MainWindow::on_ButtonSequence_clicked()
 {
+    sequenceWindow->show();
+    this->close();
 
 }
 

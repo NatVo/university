@@ -1,7 +1,11 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sequence.ui'
 **
+<<<<<<< HEAD
 ** Created by: Qt User Interface Compiler version 5.9.2
+=======
+** Created by: Qt User Interface Compiler version 5.5.1
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -40,8 +44,13 @@ public:
 
     void retranslateUi(QWidget *Sequence)
     {
+<<<<<<< HEAD
         Sequence->setWindowTitle(QApplication::translate("Sequence", "Form", Q_NULLPTR));
         ButtonBack->setText(QApplication::translate("Sequence", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", Q_NULLPTR));
+=======
+        Sequence->setWindowTitle(QApplication::translate("Sequence", "Form", 0));
+        ButtonBack->setText(QApplication::translate("Sequence", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0));
+>>>>>>> f3449e4ae7da1a9847e16ca4acfae0a56db57005
     } // retranslateUi
 
 };
