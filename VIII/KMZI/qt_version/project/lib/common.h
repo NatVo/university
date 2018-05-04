@@ -2,6 +2,7 @@
 #define __COMMON_H__
 #include <iostream>
 #include <vector>
+#include <tuple>
 
 template <typename Com> class Common
 {

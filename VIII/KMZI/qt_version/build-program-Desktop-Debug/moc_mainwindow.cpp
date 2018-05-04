@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../project/mainwindow.h"
+#include "../program/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -30,16 +30,16 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 23), // "on_ButtonVernam_clicked"
+QT_MOC_LITERAL(1, 11, 23), // "on_VernamButton_clicked"
 QT_MOC_LITERAL(2, 35, 0), // ""
-QT_MOC_LITERAL(3, 36, 20), // "on_ButtonRSA_clicked"
-QT_MOC_LITERAL(4, 57, 25), // "on_ButtonSequence_clicked"
-QT_MOC_LITERAL(5, 83, 28) // "on_ButtonBlockCipher_clicked"
+QT_MOC_LITERAL(3, 36, 20), // "on_RSAButton_clicked"
+QT_MOC_LITERAL(4, 57, 28), // "on_BlockCipherButton_clicked"
+QT_MOC_LITERAL(5, 86, 25) // "on_SequenceButton_clicked"
 
     },
-    "MainWindow\0on_ButtonVernam_clicked\0\0"
-    "on_ButtonRSA_clicked\0on_ButtonSequence_clicked\0"
-    "on_ButtonBlockCipher_clicked"
+    "MainWindow\0on_VernamButton_clicked\0\0"
+    "on_RSAButton_clicked\0on_BlockCipherButton_clicked\0"
+    "on_SequenceButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,10 +77,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_ButtonVernam_clicked(); break;
-        case 1: _t->on_ButtonRSA_clicked(); break;
-        case 2: _t->on_ButtonSequence_clicked(); break;
-        case 3: _t->on_ButtonBlockCipher_clicked(); break;
+        case 0: _t->on_VernamButton_clicked(); break;
+        case 1: _t->on_RSAButton_clicked(); break;
+        case 2: _t->on_BlockCipherButton_clicked(); break;
+        case 3: _t->on_SequenceButton_clicked(); break;
         default: ;
         }
     }

@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <blockcipherwindow.h>
+#include <vernamwindow.h>
 #include <rsawindow.h>
+#include <sequencewindow.h>
+#include <blockcipherwindow.h>
 
-#include <sequence.h>
 
 namespace Ui {
 class MainWindow;
@@ -20,18 +21,20 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ButtonVernam_clicked();
+    void on_VernamButton_clicked();
 
-    void on_ButtonRSA_clicked();
-    void on_ButtonSequence_clicked();
-    void on_ButtonBlockCipher_clicked();
+    void on_RSAButton_clicked();
+
+    void on_BlockCipherButton_clicked();
+
+    void on_SequenceButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-
+    VernamWindow *vernamWindow;
     RSAWindow *rsaWindow;
-    BlockcipherWindow *blockcipherWindow;
-    Sequence *sequenceWindow;
+    SequenceWindow *sequenceWindow;
+    BlockCipherWindow *blockcipherWindow;
 };
 
 #endif // MAINWINDOW_H

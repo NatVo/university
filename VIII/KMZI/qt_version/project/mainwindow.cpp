@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Block Cipher
     blockcipherWindow = new BlockCipher();
-    connect(blockcipherWindow, &BlockCipher::startWindow, this, &MainWindow::show);
+    connect(blockcipherWindow, &BlockcipherWindow::startWindow, this, &MainWindow::show);
 
     //Sequence
     sequenceWindow = new Sequence();

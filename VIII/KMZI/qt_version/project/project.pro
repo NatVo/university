@@ -26,18 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    blockcipher.cpp \
     sequence.cpp \
-    rsawindow.cpp
+    rsawindow.cpp \
+    blockcipherwindow.cpp
 
 HEADERS += \
         mainwindow.h \
-    blockcipher.h \
     sequence.h \
-    rsawindow.h
+    rsawindow.h \
+    blockcipherwindow.h
 
 FORMS += \
         mainwindow.ui \
-    blockcipher.ui \
     sequence.ui \
-    rsawindow.ui
+    rsawindow.ui \
+    blockcipherwindow.ui
